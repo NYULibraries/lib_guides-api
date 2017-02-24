@@ -12,10 +12,9 @@ Gem::Specification.new do |s|
   s.email       = 'eric.griffis@nyu.edu'
 
   s.files         = `git ls-files`.split($/)
-  s.test_files    = %w[spec/lib/lib_guides/api/base_spec.rb spec/lib/lib_guides/api/component_spec.rb spec/lib/lib_guides/api/component_list_spec.rb]
   s.require_paths = ["lib"]
 
-  s.homepage    = 'https://github.com/NYULibraries/lib_guides'
+  s.homepage    = 'https://github.com/NYULibraries/lib_guides-api'
   s.license     = 'MIT'
 
   s.add_dependency 'faraday', '>= 0.11'
