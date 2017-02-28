@@ -3,11 +3,11 @@ module LibGuides
     class Base
       attr_reader :current_token, :token_expires_at
 
-      def execute(verb, path, params={})
+      def execute(verb, path, params=nil)
         response = connection.public_send(verb) do |req|
           req.url "/#{API_VERSION}#{path}"
           req.headers["Authorization"] = "Bearer #{token}"
-          req.body = params
+          req.body = params if params
         end
         parse_response(response)
       end
@@ -27,7 +27,7 @@ module LibGuides
           client_secret: ENV['LIB_GUIDES_CLIENT_SECRET'],
           grant_type: 'client_credentials'
         })
-        json = JSON.parse(response.body)
+        json = parse_response(response)
         @token_expires_at = Time.now + json["expires_in"].to_i
         json["access_token"]
       end
