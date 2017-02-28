@@ -17,6 +17,7 @@ Get an A-Z list of all assets:
 
 ```
 list = LibGuides::API::Az::List.new
+list.load
 list.each do |asset|
   puts asset.name
 end

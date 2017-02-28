@@ -24,7 +24,7 @@ module LibGuides
         private
         def mutable_attributes
           MUTABLE_ATTRIBUTES.inject({}) do |result, attr_name|
-            result[attr_name] = public_send(attr_name)
+            result[attr_name] = public_send(attr_name) if public_send(attr_name)
             result
           end
         end
