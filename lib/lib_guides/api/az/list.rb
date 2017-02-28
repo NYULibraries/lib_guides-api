@@ -7,7 +7,7 @@ module LibGuides
         delegate [:each, :length, :empty?, :<<, :[]] => :@members
 
         def initialize
-          @members = execute(:get, '/1.2/az').map do |asset_attrs|
+          @members = execute(:get, '/az').map do |asset_attrs|
             Asset.new(asset_attrs)
           end
         end

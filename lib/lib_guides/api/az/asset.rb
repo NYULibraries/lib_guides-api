@@ -15,9 +15,9 @@ module LibGuides
 
         def save
           if id
-            execute(:put, "/1.2/az/#{id}", mutable_attributes)
+            execute(:put, "/az/#{id}", mutable_attributes)
           else
-            @id = execute(:post, "/1.2/az", mutable_attributes)["id"]
+            @id = execute(:post, "/az", mutable_attributes)["id"]
           end
         end
 

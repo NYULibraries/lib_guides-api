@@ -5,13 +5,11 @@ module LibGuides
 
       def execute(verb, path, params={})
         response = connection.public_send(verb) do |req|
-          req.url path
+          req.url "/#{API_VERSION}#{path}"
           req.headers["Authorization"] = "Bearer #{token}"
           req.body = params
         end
         parse_response(response)
-      rescue JSON::ParserError => e
-        binding.pry
       end
 
       def token
