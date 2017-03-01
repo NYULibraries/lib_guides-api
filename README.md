@@ -1,5 +1,10 @@
 # LibGuides::API
 
+[![NYU](https://github.com/NYULibraries/nyulibraries-assets/blob/master/lib/assets/images/nyu.png)](https://dev.library.nyu.edu)
+[![Build Status](https://travis-ci.org/NYULibraries/lib_guides-api.svg)](https://travis-ci.org/NYULibraries/lib_guides-api)
+[![Code Climate](https://codeclimate.com/github/NYULibraries/lib_guides-api/badges/gpa.svg)](https://codeclimate.com/github/NYULibraries/lib_guides-api)
+[![Coverage Status](https://coveralls.io/repos/github/NYULibraries/lib_guides-api/badge.svg)](https://coveralls.io/github/NYULibraries/lib_guides-api)
+
 Ruby client for LibGuides API
 
 ## Installation

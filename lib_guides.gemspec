@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/NYULibraries/lib_guides-api'
   s.license     = 'MIT'
 
+  s.required_ruby_version = '>= 2.1'
+
   s.add_dependency 'faraday', '>= 0.11'
   s.add_dependency 'json'
 
