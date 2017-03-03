@@ -5,7 +5,7 @@ module LibGuides
 
       def execute(verb, path, params=nil)
         response = connection.public_send(verb) do |req|
-          req.url "/#{LibGuides::API_VERSION}#{path}"
+          req.url "/#{API_VERSION}#{path}"
           req.headers["Authorization"] = "Bearer #{token}"
           req.body = params if params
         end
