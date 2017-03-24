@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'lib_guides/api'
 
-describe LibGuides::API::Az::Asset do
+describe LibGuides::API::V1_2::Az::Asset do
   let(:asset){ described_class.new attributes }
 
   describe "initialize" do

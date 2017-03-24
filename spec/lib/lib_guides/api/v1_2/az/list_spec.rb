@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'lib_guides/api'
 
-describe LibGuides::API::Az::List do
+describe LibGuides::API::V1_2::Az::List do
   let(:list){ described_class.new }
 
   describe "load" do
@@ -20,15 +20,15 @@ describe LibGuides::API::Az::List do
     it "should consist of correct number of assets" do
       subject
       expect(list.length).to eq 3
-      expect(list[0]).to be_a LibGuides::API::Az::Asset
-      expect(list[1]).to be_a LibGuides::API::Az::Asset
-      expect(list[2]).to be_a LibGuides::API::Az::Asset
+      expect(list[0]).to be_a LibGuides::API::V1_2::Az::Asset
+      expect(list[1]).to be_a LibGuides::API::V1_2::Az::Asset
+      expect(list[2]).to be_a LibGuides::API::V1_2::Az::Asset
       expect(list[3]).to be nil
     end
     it "should initialize assets correctly" do
-      expect(LibGuides::API::Az::Asset).to receive(:new).with(asset_attrs1)
-      expect(LibGuides::API::Az::Asset).to receive(:new).with(asset_attrs2)
-      expect(LibGuides::API::Az::Asset).to receive(:new).with(asset_attrs3)
+      expect(LibGuides::API::V1_2::Az::Asset).to receive(:new).with(asset_attrs1)
+      expect(LibGuides::API::V1_2::Az::Asset).to receive(:new).with(asset_attrs2)
+      expect(LibGuides::API::V1_2::Az::Asset).to receive(:new).with(asset_attrs3)
       subject
     end
   end

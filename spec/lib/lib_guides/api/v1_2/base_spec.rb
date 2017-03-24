@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'lib_guides/api'
 
-describe LibGuides::API::Base do
+describe LibGuides::API::V1_2::Base do
   let(:base){ described_class.new }
 
   describe "execute" do
@@ -70,11 +70,11 @@ describe LibGuides::API::Base do
       let(:json){ {"error" => "some_error"} }
 
       it "should raise custom error" do
-        expect{ subject }.to raise_error LibGuides::API::Error
+        expect{ subject }.to raise_error LibGuides::API::V1_2::Error
       end
 
       it "should initialize custom error" do
-        expect(LibGuides::API::Error).to receive(:new).with(response)
+        expect(LibGuides::API::V1_2::Error).to receive(:new).with(response)
         expect{ subject }.to raise_error TypeError
       end
     end
@@ -84,11 +84,11 @@ describe LibGuides::API::Base do
       let(:json){ {"data" => "some_data"} }
 
       it "should raise custom error" do
-        expect{ subject }.to raise_error LibGuides::API::Error
+        expect{ subject }.to raise_error LibGuides::API::V1_2::Error
       end
 
       it "should initialize custom error" do
-        expect(LibGuides::API::Error).to receive(:new).with(response)
+        expect(LibGuides::API::V1_2::Error).to receive(:new).with(response)
         expect{ subject }.to raise_error TypeError
       end
     end
@@ -190,11 +190,11 @@ describe LibGuides::API::Base do
       let(:json){ {"error" => "Some error"} }
 
       it "should raise custom error" do
-        expect{ subject }.to raise_error LibGuides::API::Error
+        expect{ subject }.to raise_error LibGuides::API::V1_2::Error
       end
 
       it "should initialize custom error" do
-        expect(LibGuides::API::Error).to receive(:new).with(response)
+        expect(LibGuides::API::V1_2::Error).to receive(:new).with(response)
         expect{ subject }.to raise_error TypeError
       end
     end
@@ -204,11 +204,11 @@ describe LibGuides::API::Base do
       let(:json){ {"error" => "Some error"} }
 
       it "should raise custom error" do
-        expect{ subject }.to raise_error LibGuides::API::Error
+        expect{ subject }.to raise_error LibGuides::API::V1_2::Error
       end
 
       it "should initialize custom error" do
-        expect(LibGuides::API::Error).to receive(:new).with(response)
+        expect(LibGuides::API::V1_2::Error).to receive(:new).with(response)
         expect{ subject }.to raise_error TypeError
       end
     end
