@@ -11,7 +11,7 @@ module LibGuides
         end
 
         def load
-          @members = execute(:get, '/az').map do |asset_attrs|
+          @members = execute(:get, '/az?expand=permitted_uses,az_types,az_props').map do |asset_attrs|
             Asset.new(asset_attrs)
           end
         end
