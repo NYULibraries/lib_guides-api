@@ -2,7 +2,7 @@ module LibGuides
   module API
     module Az
       class Asset < Base
-        MUTABLE_ATTRIBUTES = %i[url name owner_id type_id]
+        MUTABLE_ATTRIBUTES = %i[url name owner_id type_id az_vendor_id description enable_hidden meta site_id slug_id updated]
 
         attr_reader :id
         attr_accessor *MUTABLE_ATTRIBUTES
