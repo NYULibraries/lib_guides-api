@@ -14,7 +14,7 @@ describe LibGuides::API::Az::List do
 
     it { is_expected.to be_an Array }
     it "should execute get request correctly" do
-      expect(list).to receive(:execute).with(:get, '/az')
+      expect(list).to receive(:execute).with(:get, '/az?expand=permitted_uses,az_types,az_props')
       subject
     end
     it "should consist of correct number of assets" do
