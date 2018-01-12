@@ -5,12 +5,37 @@ module LibGuides
 
       def initialize(faraday_response)
         @faraday_response = faraday_response
-        @json_response = JSON.parse(@faraday_response.body)
         super(message)
       end
 
       def message
-        "#{json_response["error"]}: #{json_response["error_description"]}"
+        @message ||= reason_phrase || generate_message
+      end
+
+      def reason_phrase
+        return unless faraday_response.reason_phrase
+        return unless faraday_response.reason_phrase.strip.length > 0
+        faraday_response.reason_phrase
+      end
+
+      def generate_message
+        if json_response
+          "#{json_response["error"]}: #{json_response["error_description"]}"
+        else
+          response_body
+        end
+      end
+
+      def json_response
+        return unless response_body
+        @json_response ||= JSON.parse(response_body)
+      rescue JSON::ParserError => e
+        nil
+      end
+
+      private
+      def response_body
+        faraday_response.body
       end
     end
   end

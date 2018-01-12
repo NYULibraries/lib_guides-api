@@ -12,7 +12,7 @@ describe LibGuides::API::Base do
     let(:connection){ instance_double Faraday::Connection, public_send: response }
     let(:request){ instance_double Faraday::Request, url: true, headers: headers, :body= => true }
     let(:headers){ instance_double Faraday::Utils::Headers, :[]= => true }
-    let(:response){ instance_double Faraday::Response, body: json.to_json, success?: success }
+    let(:response){ instance_double Faraday::Response, body: json.to_json, reason_phrase: nil, success?: success }
     before do
       allow(base).to receive(:connection).and_return connection
       allow(connection).to receive(:public_send).and_yield(request).and_return response
@@ -161,13 +161,10 @@ describe LibGuides::API::Base do
 
   describe "get_token" do
     subject{ base.get_token }
-    let(:connection){ instance_double Faraday::Connection }
-    let(:response){ instance_double Faraday::Response }
+    let(:connection){ instance_double Faraday::Connection, post: response }
+    let(:response){ instance_double Faraday::Response, body: json.to_json, success?: success, reason_phrase: nil }
     before do
       allow(base).to receive(:connection).and_return connection
-      allow(connection).to receive(:post).and_return response
-      allow(response).to receive(:body).and_return json.to_json
-      allow(response).to receive(:success?).and_return success
     end
 
     context "with valid, successful json response" do
