@@ -19,14 +19,23 @@ module LibGuides
       end
 
       def generate_message
-        @json_response = JSON.parse(@faraday_response.body)
-        generate_message_from_json
-      rescue JSON::ParserError => e
-        @faraday_response.body
+        if json_response
+          "#{json_response["error"]}: #{json_response["error_description"]}"
+        else
+          response_body
+        end
       end
 
-      def generate_message_from_json
-        "#{json_response["error"]}: #{json_response["error_description"]}"
+      def json_response
+        return unless response_body
+        @json_response ||= JSON.parse(response_body)
+      rescue JSON::ParserError => e
+        nil
+      end
+
+      private
+      def response_body
+        faraday_response.body
       end
     end
   end
