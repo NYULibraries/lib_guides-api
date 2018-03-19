@@ -9,7 +9,18 @@ module LibGuides
       end
 
       def message
-        @message ||= reason_phrase || generate_message
+        @message ||= generate_message
+      end
+
+      def generate_message
+        (parsed_message + "\n#{response_body}").strip
+      end
+
+      def parsed_message
+        [
+          json_message,
+          ("(#{reason_phrase})" if reason_phrase),
+        ].compact.join(" ")
       end
 
       def reason_phrase
@@ -18,12 +29,9 @@ module LibGuides
         faraday_response.reason_phrase
       end
 
-      def generate_message
-        if json_response
-          "#{json_response["error"]}: #{json_response["error_description"]}"
-        else
-          response_body
-        end
+      def json_message
+        return unless json_response
+        "#{json_response["error"]}: #{json_response["error_description"]}"
       end
 
       def json_response
