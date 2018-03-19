@@ -9,7 +9,7 @@ module LibGuides
       end
 
       def message
-        @message ||= reason_phrase || generate_message
+        @message ||= "#{generate_message}\n#{response_body}"
       end
 
       def reason_phrase
@@ -19,11 +19,10 @@ module LibGuides
       end
 
       def generate_message
-        if json_response
-          "#{json_response["error"]}: #{json_response["error_description"]}"
-        else
-          response_body
-        end
+        [
+          ("#{json_response["error"]}: #{json_response["error_description"]}" if json_response),
+          ("(#{reason_phrase})" if reason_phrase)
+        ].compact.join(" ")
       end
 
       def json_response
