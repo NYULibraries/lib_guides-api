@@ -33,7 +33,7 @@ module LibGuides
       end
 
       def connection
-        @conn ||= Faraday.new(url: 'http://lgapi-us.libapps.com')
+        @conn ||= Faraday.new(url: 'https://lgapi-us.libapps.com')
       end
 
       private
