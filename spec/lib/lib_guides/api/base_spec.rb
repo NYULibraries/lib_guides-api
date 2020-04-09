@@ -220,7 +220,7 @@ describe LibGuides::API::Base do
 
     it { is_expected.to eq faraday }
     it "should initialize faraday correctly" do
-      expect(Faraday).to receive(:new).with(url: 'http://lgapi-us.libapps.com')
+      expect(Faraday).to receive(:new).with(url: 'https://lgapi-us.libapps.com')
       subject
     end
   end
